@@ -94,6 +94,21 @@ delimiter ;
 
 call buscar_clientes("L");
 
+-- busqueda por DNI como en reniec
+DELIMITER $$
+CREATE PROCEDURE buscar_por_dni(
+    IN p_dni CHAR(8)
+)
+BEGIN
+    SELECT idCliente, nombre, dni, correo, telefono
+    FROM tb_clientes
+    WHERE dni = p_dni;
+END $$
+DELIMITER ;
+
+CALL buscar_por_dni('12345678');
+
+
 
 -- registrar a un cliente
 DELIMITER %%
